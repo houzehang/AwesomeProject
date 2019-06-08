@@ -20,11 +20,11 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
+      // 尝试把`flexDirection`改为`column`看看
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <Text> Hello, world!</Text>
+        <View style={{flex: 1, backgroundColor: 'powderblue'}} />
+        <View style={{flex: 1, backgroundColor: 'skyblue'}} />
+        <View style={{flex: 1, backgroundColor: 'steelblue'}} />
       </View>
     );
   }
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   welcome: {
