@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, TextInput, View} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,13 +18,24 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  constructor(props){
+    super(props);
+    this.state ={
+      text: ''
+    }
+  }
+
   render() {
     return (
-      // 尝试把`flexDirection`改为`column`看看
       <View style={styles.container}>
-        <View style={{flex: 1, backgroundColor: 'powderblue'}} />
-        <View style={{flex: 1, backgroundColor: 'skyblue'}} />
-        <View style={{flex: 1, backgroundColor: 'steelblue'}} />
+        <TextInput 
+          style={styles.input}
+          placeholder='type here'
+          onChangeText={(text)=>this.setState({text})}
+        />
+        <Text style={styles.notice}>
+          {this.state.text.split(' ').map((word)=>word && '🍕').join(' ')}
+        </Text>
       </View>
     );
   }
@@ -33,17 +44,13 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
+    padding: 10
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  input: {
+    height: 100,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  notice:{
+    padding: 10,
+    fontSize: 42
+  }
 });
